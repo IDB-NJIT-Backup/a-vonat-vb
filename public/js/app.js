@@ -20492,7 +20492,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      controller: new _controllers_train_controller__WEBPACK_IMPORTED_MODULE_1__.TrainController(),
+      controller: _controllers_train_controller__WEBPACK_IMPORTED_MODULE_1__.TrainController.getInstance(),
       isBusy: false,
       trains: [],
       train: null
@@ -21035,28 +21035,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
+function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) { _classCheckPrivateStaticAccess(receiver, classConstructor); _classCheckPrivateStaticFieldDescriptor(descriptor, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
 
-function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
+function _classCheckPrivateStaticFieldDescriptor(descriptor, action) { if (descriptor === undefined) { throw new TypeError("attempted to " + action + " private static field before its declaration"); } }
 
-function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
-
-function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
+function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
 
 function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
-
-var _instance = /*#__PURE__*/new WeakMap();
 
 var TrainController = /*#__PURE__*/function () {
   function TrainController() {
     var _this = this;
 
     _classCallCheck(this, TrainController);
-
-    _classPrivateFieldInitSpec(this, _instance, {
-      writable: true,
-      value: void 0
-    });
 
     _defineProperty(this, "url", '/api/trains');
 
@@ -21183,15 +21174,6 @@ var TrainController = /*#__PURE__*/function () {
   }
 
   _createClass(TrainController, [{
-    key: "getInstance",
-    value: function getInstance() {
-      if (!_classPrivateFieldGet(this, _instance)) {
-        return new TrainController();
-      }
-
-      return _classPrivateFieldGet(this, _instance);
-    }
-  }, {
     key: "create",
     value: function () {
       var _create = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(data) {
@@ -21294,10 +21276,23 @@ var TrainController = /*#__PURE__*/function () {
 
       return _delete;
     }()
+  }], [{
+    key: "getInstance",
+    value: function getInstance() {
+      if (!_classStaticPrivateFieldSpecGet(this, TrainController, _instance)) {
+        return new TrainController();
+      }
+
+      return _classStaticPrivateFieldSpecGet(TrainController, TrainController, _instance);
+    }
   }]);
 
   return TrainController;
 }();
+var _instance = {
+  writable: true,
+  value: void 0
+};
 
 /***/ }),
 

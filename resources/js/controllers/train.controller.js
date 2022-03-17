@@ -1,5 +1,5 @@
 export class TrainController {
-    #instance;
+    static #instance;
 
     url = '/api/trains';
 
@@ -30,12 +30,12 @@ export class TrainController {
 
     items = [];
 
-    getInstance() {
+    static getInstance() {
         if (!this.#instance) {
             return new TrainController();
         }
 
-        return this.#instance;
+        return TrainController.#instance;
     }
 
     async create(data) {

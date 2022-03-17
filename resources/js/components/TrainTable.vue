@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      controller: new TrainController(),
+      controller: TrainController.getInstance(),
       isBusy: false,
       trains: [],
       train: null
@@ -102,7 +102,7 @@ export default {
           await this.controller.create(data);
 
           this.train = null;
-          
+
           break;
         case 'update':
           await this.controller.update(id, data);
